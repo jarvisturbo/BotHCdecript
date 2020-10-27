@@ -9,7 +9,7 @@ bar="\e[0;36m=====================================================\e[0m"
 update () {
 [[ -d ${dirs} ]] && rm -rf ${dirs}
 [[ -e ${dirb}/VPSBot.sh ]] && rm ${dirb}/VPSBot.sh
-[[ -e /usr/bin/VPSBot ]] && rm /usr/bin/VPSBot
+[[ -e /usr/bin/BotHCdecript ]] && rm /usr/bin/BotHCdecript
 [[ -e ${dirb}/ShellBot.sh ]] && rm ${dirb}/ShellBot.sh
 [[ -e ${dirb}/vpsbot_conf.sh ]] && rm ${dirb}/vpsbot_conf.sh
 cd $HOME
@@ -57,7 +57,7 @@ if [[ $1 = start ]]; then
 	update
 	mensaje updated
 	cd ${dirb}
-	screen -dmS VPSBot ./VPSBot.sh
+	screen -dmS BotHCdecript ./VPSBot.sh
 else
 	echo -e "\033[0;49;93m==============================\n INSTALANDO VPSBot\n==============================\033[0m"
 	update
