@@ -1,6 +1,6 @@
 #!/bin/bash
 
-dirb="/etc/VPSBot" && [[ ! -d ${dirb} ]] && mkdir ${dirb}
+dirb="/etc/BotHCdecript" && [[ ! -d ${dirb} ]] && mkdir ${dirb}
 dirs="${dirb}/sources" && [[ ! -d ${dirs} ]] && mkdir ${dirs}
 SCPresq="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3J1ZGk5OTk5L1ZQU0JvdC9tYWluL3NvdXJjZXM="
 SUB_DOM='base64 -d'
@@ -22,7 +22,7 @@ wget -O $HOME/$arqx ${REQUEST}/${arqx} > /dev/null 2>&1 && echo -e "\033[0;49;93
 done
 fi
  rm $HOME/lista-arq
- echo "cd ${dirb}" > /usr/bin/VPSBot && echo './vpsbot_conf.sh' >> /usr/bin/VPSBot && chmod +x /usr/bin/VPSBot
+ echo "cd ${dirb}" > /usr/bin/BotHCdecript && echo './vpsbot_conf.sh' >> /usr/bin/BotHCdecript && chmod +x /usr/bin/BotHCdecript
 }
 
 veryfy_fun () {
@@ -61,7 +61,7 @@ if [[ $1 = start ]]; then
 else
 	echo -e "\033[0;49;93m==============================\n INSTALANDO VPSBot\n==============================\033[0m"
 	update
-	echo -e "\033[0;49;93m==============================\n VPSBot INSTALADO\n==============================\n escriba \033[5;49;32mVPSBot \033[0;49;93mpara ejecutar\n==============================\033[0m"
+	echo -e "\033[0;49;93m==============================\n VPSBot INSTALADO\n==============================\n escriba \033[5;49;32mBotHCdecript \033[0;49;93mpara ejecutar\n==============================\033[0m"
 fi
 
 rm $HOME/update.sh
