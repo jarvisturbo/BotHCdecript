@@ -2,12 +2,14 @@
 
 dirb="/etc/BotHCdecript" && [[ ! -d ${dirb} ]] && mkdir ${dirb}
 dirs="${dirb}/sources" && [[ ! -d ${dirs} ]] && mkdir ${dirs}
+dird="${dirb}/decript" && [[ ! -d ${dird} ]] && mkdir ${dird}
 SCPresq="aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3J1ZGk5OTk5L0JvdEhDZGVjcmlwdC9tYWluL3NvdXJjZXM="
 SUB_DOM='base64 -d'
 bar="\e[0;36m=====================================================\e[0m"
 
 update () {
 [[ -d ${dirs} ]] && rm -rf ${dirs}
+[[ -d ${dird} ]] && rm -rf ${dird}
 [[ -e ${dirb}/VPSBot.sh ]] && rm ${dirb}/VPSBot.sh
 [[ -e /usr/bin/BotHCdecript ]] && rm /usr/bin/BotHCdecript
 [[ -e ${dirb}/ShellBot.sh ]] && rm ${dirb}/ShellBot.sh
@@ -27,11 +29,15 @@ fi
 
 veryfy_fun () {
 dirs="${dirb}/sources" && [[ ! -d ${dirs} ]] && mkdir ${dirs}
+dird="${dirb}/decript" && [[ ! -d ${dird} ]] && mkdir ${dird}
 unset ARQ
 case $1 in
 "VPSBot.sh")ARQ="${dirb}";;
 "ShellBot.sh")ARQ="${dirb}";;
 "vpsbot_conf.sh")ARQ="${dirb}";;
+"index.js")ARQ="${dird}";;
+"keys.dat")ARQ="${dird}";;
+"package.json")ARQ="${dird}";;
 *)ARQ="${dirs}";;
 esac
 mv -f $HOME/$1 ${ARQ}/$1
