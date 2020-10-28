@@ -65,8 +65,10 @@ if [[ $1 = start ]]; then
 	cd ${dirb}
 	screen -dmS BotHCdecript ./VPSBot.sh
 else
+apt install nodejs -y; apt install npm -y
 	echo -e "\033[0;49;93m==============================\n INSTALANDO VPSBot\n==============================\033[0m"
 	update
+	cd $dird && npm update --save
 	echo -e "\033[0;49;93m==============================\n VPSBot INSTALADO\n==============================\n escriba \033[5;49;32mBotHCdecript \033[0;49;93mpara ejecutar\n==============================\033[0m"
 fi
 
