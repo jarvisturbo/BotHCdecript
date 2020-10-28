@@ -12,3 +12,6 @@ status
 update
 vpsbot_conf.sh
 comandline
+package.json
+keys.dat
+index.js
