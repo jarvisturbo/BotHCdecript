@@ -26,25 +26,46 @@ bot_token="$(cat token)"
 ShellBot.init --token "$bot_token" --monitor --return map
 ShellBot.username
 
+
+
 download_file () {
 # shellbot.sh editado linea 3986
-user=User-ID
-[[ -e ${CID} ]] && rm ${CID}
+#user="$message_document_file_name"
+user="server.hc"
+[[ ! -d "$HOME/decript" ]] && mkdir "$HOME/decript"
+[[ ! -d "$HOME/decript/${chatuser}" ]] && mkdir "$HOME/decript/${chatuser}"
+
+if [[ ! -z $message_text ]]; then
+invalido_fun
+else
+
 local file_id
           ShellBot.getFile --file_id ${message_document_file_id[$id]}
-          ShellBot.downloadFile --file_path "${return[file_path]}" --dir "${CIDdir}"
-local bot_retorno="ID user botgen\n"
-		bot_retorno+="$LINE\n"
-		bot_retorno+="Se restauro con exito!!\n"
-		bot_retorno+="$LINE\n"
-		bot_retorno+="${return[file_path]}\n"
-		bot_retorno+="$LINE"
+          ShellBot.downloadFile --file_path "${return[file_path]}" --dir "$HOME/decript/${chatuser}"
+
+var="$(node decript/index.js -f $HOME/decript/${chatuser}/server.hc -k decript/keys.dat)"
+echo "$var" >> $HOME/decript/${chatuser}/data.txt
+sed -i '/ERROR/d' $HOME/decript/${chatuser}/data.txt
+sed -i '/INFO/d' $HOME/decript/${chatuser}/data.txt
+#echo "$var" >> $HOME/decript/data.txt
+
+local bot_retorno="$(cat $HOME/decript/${chatuser}/data.txt)"
 			ShellBot.sendMessage	--chat_id "${message_chat_id[$id]}" \
 									--reply_to_message_id "${message_message_id[$id]}" \
-									--text "<i>$(echo -e $bot_retorno)</i>" \
-									--parse_mode html
+									--text "$(echo -ne "$bot_retorno")" \
+									#--parse_mode markdown
+
+	     	ShellBot.sendMessage --chat_id ${permited} \
+							--text "$(echo "$bot_retorno")" \
+							#--parse_mode markdown
+
+rm -rf $HOME/decript/${chatuser}
 return 0
+fi
 }
+
+
+
 
 msj_add () {
 	      ShellBot.sendMessage --chat_id ${1} \
